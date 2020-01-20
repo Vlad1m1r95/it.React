@@ -20,7 +20,7 @@ const longestPalindrome = (string) => {
       array.reduce((el, nexel) => isPalindrome(el, nexel))
       console.log(array)
       array.shift()
-      return getPalindrome(array, n - 1)
+      return getPalindrome(array, array.length)
     }
 
   }
