@@ -1,6 +1,5 @@
 const largestN = (array, n) => {
   array = array.sort((a, b) => b - a)
-
   return array[n - 1]
 }
 

@@ -1,6 +1,4 @@
 const max = (array, money) => {
-
-
   array.sort()
   let quantity = 0
   array.forEach(element => {
@@ -8,7 +6,6 @@ const max = (array, money) => {
       quantity++
       money = money - element
     }
-
   });
   return quantity
 }
