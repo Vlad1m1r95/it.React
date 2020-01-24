@@ -1,7 +1,3 @@
-
-
-
-
 const observerCounter = function (mutationsList) {
   for (let mutation of mutationsList) {
     const { target } = mutation
@@ -9,11 +5,6 @@ const observerCounter = function (mutationsList) {
     if (numb) {
       numb.innerHTML = target.getAttribute('data-counter')
     }
-
-
-    // console.log(target.querySelector('.counter_numb'))
-
-
   }
 }
 

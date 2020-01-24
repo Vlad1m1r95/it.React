@@ -1,7 +1,8 @@
-import $ from './../helper/getElementBy'
+
+import getRandomInt from './../helper/mathrandom'
 class Counter {
   constructor(config, elem) {
-    const { range, start, max, min, step } = config
+    const { range, start, max, min, step, randomize } = config
     const { blockCounter, numb } = elem
     this.range = range || Infinity,
       this.start = start || 0,
@@ -10,6 +11,8 @@ class Counter {
       this.step = step || 1,
       this.counter = this.start
     this.block = blockCounter
+    this.randomize = randomize
+
 
 
 
@@ -60,13 +63,32 @@ class Counter {
 
   decrement() {
 
-    if (this.counter > this.min) return this.counter = this.counter - this.step
+    if (this.randomize) {
+      const { start, end } = this.randomize
+      this.step = getRandomInt(start, end)
+    }
+    if (this.counter > this.min) {
+      return this.counter = this.counter - this.step
+    }
+    if (this.counter < this.min) {
+      return this.counter = this.min
+    }
 
 
 
   }
   increment() {
-    if (this.counter < this.max) return this.counter = this.counter + this.step
+    if (this.randomize) {
+      const { start, end } = this.randomize
+      this.step = getRandomInt(start, end)
+    }
+    if (this.counter < this.max) {
+      return this.counter = this.counter + this.step
+    }
+    if (this.counter > this.max) {
+      return this.counter = this.max
+    }
+
   }
 
 

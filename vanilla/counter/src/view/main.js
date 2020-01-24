@@ -13,14 +13,13 @@ const mainTemplateProperty = {
 }
 
 const main = (root) => {
-  // Выбираем целевой элемент
-
-
-
-  const { counter1, counter2 } = config
+  const {
+    counter1,
+    counter2,
+    counter3, } = config
   root.innerHTML = mainTemplate(mainTemplateProperty)
   counter(counter1)
   counter(counter2)
-
+  counter(counter3)
 }
 export default main
