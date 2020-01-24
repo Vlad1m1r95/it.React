@@ -7,7 +7,7 @@ const longestPalindrome = (string) => {
 
   const isPalindrome = (el, nexel) => {
     let elem = el + nexel
-    if (elem === elem.split('').reverse().join('') && elem.length > 2) {
+    if (elem === elem.split('').reverse().join('')) {
       palindromes.push(elem)
     }
     return elem
@@ -18,7 +18,6 @@ const longestPalindrome = (string) => {
       return
     } else {
       array.reduce((el, nexel) => isPalindrome(el, nexel))
-      console.log(array)
       array.shift()
       return getPalindrome(array, array.length)
     }

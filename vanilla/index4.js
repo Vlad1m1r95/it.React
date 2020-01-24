@@ -1,4 +1,4 @@
-const sort = (array) => {
+const short = (array) => {
   let elemArr = []
   let resultArr = []
   array.forEach(element => {
@@ -22,4 +22,4 @@ const sort = (array) => {
 }
 
 
-console.log(sort([-3, -2, -1, 1, 2, 3]))
+console.log(short([-3, -2, -1, 1, 2, 3]))

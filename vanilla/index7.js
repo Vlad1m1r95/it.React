@@ -6,4 +6,4 @@ const largestN = (array, n) => {
 
 
 
-console.log(largestN([2, 4, 1, 5, 3], 1))
+console.log(largestN([10, 10, 9, 5, 3], 2))
