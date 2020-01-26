@@ -1,21 +1,19 @@
-import './sass/index.sass'
-import $ from './helper/getElementBy'
-import main from './view/main'
-import observerCounter from './state/observerCounter'
+import './sass/index.sass';
+import $ from './helper/getElementBy';
+import main from './view/main';
+import observerCounter from './state/observerCounter';
 
-const root = $.id('root')
+const root = $.id('root');
 window.onload = () => {
-  main(root)
+  main(root);
   // Конфигурация observer (за какими изменениями наблюдать)
   const setting = {
     attributes: true,
-    childList: true,
-    subtree: true
-  }
-  const observer = new MutationObserver(observerCounter)
-  const target = $.id(`content_counter_block`)
-  observer.observe(target, setting)
-}
+    // childList: true,
+    subtree: true,
 
-
-
+  };
+  const observer = new MutationObserver(observerCounter);
+  const target = $.id('root');
+  observer.observe(target, setting);
+};
