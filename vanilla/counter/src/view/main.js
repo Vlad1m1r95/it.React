@@ -1,6 +1,6 @@
 import mainTemplate from '../template/main.hbs';
 import counter from './counter';
-import config from '../state/counterConfig';
+import config from '../config/counterConfig';
 
 const mainTemplateProperty = {
   title: 'Сумма :',

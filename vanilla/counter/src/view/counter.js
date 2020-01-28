@@ -1,8 +1,8 @@
 import counterTemplate from '../template/counter.hbs';
-import counterController from '../controller/counterTemplate';
 import $ from '../helper/getElementBy';
 import create from '../helper/createelement';
 import State from '../state/state';
+import Counter from '../controller/counter';
 
 let { state } = State;
 
@@ -27,7 +27,8 @@ const counter = (config) => {
     numb: $.class('.counter_numb'),
     mainCounter: $.id('sum_counter'),
   };
-  counterController(config, elem);
+  const newCounter = new Counter(config, elem);
+  newCounter.check();
 };
 
 

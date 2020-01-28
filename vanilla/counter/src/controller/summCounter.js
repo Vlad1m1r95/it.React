@@ -1,4 +1,4 @@
-import State from './state';
+import State from '../state/state';
 
 class SummCounter {
   constructor(stateCounter = State.Counter) {

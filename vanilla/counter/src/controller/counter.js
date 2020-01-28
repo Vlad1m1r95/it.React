@@ -1,5 +1,5 @@
 import getRandomInt from '../helper/mathrandom';
-import SummCounter from '../state/summCounter';
+import SummCounter from './summCounter';
 
 const sum = new SummCounter();
 class Counter {
