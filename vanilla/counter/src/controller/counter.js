@@ -21,7 +21,7 @@ class Counter {
     this.oldData = null;
     this.differenceData = null;
     this.sum = sum;
-    this.MainCounter = mainCounter;
+    this.mainCounter = mainCounter;
   }
 
   getCounter() {
@@ -31,7 +31,7 @@ class Counter {
   check() {
     setTimeout(() => this.block.setAttribute('data-counter', this.start), 1);
     setTimeout(() => this.sum.setSumCounter(parseInt(this.block.dataset.counter, 10)), 1);
-    setTimeout(() => this.MainCounter.setAttribute('data-sumcounter', this.sum.getSumCounter()));
+    setTimeout(() => this.mainCounter.setAttribute('data-sumcounter', this.sum.getSumCounter()));
 
     this.block.addEventListener('click', (e) => {
       const event = e.target;
@@ -62,7 +62,7 @@ class Counter {
     this.block.dataset.counter = this.Data;
     this.block.dataset.differenceData = this.differenceData;
     this.sum.setSumCounter(this.differenceData);
-    this.MainCounter.dataset.sumcounter = this.sum.getSumCounter();
+    this.mainCounter.dataset.sumcounter = this.sum.getSumCounter();
     return { data: this.Data, dataDifference: this.differenceData, dataOld: this.oldData };
   }
 

@@ -1,7 +1,7 @@
 import State from '../state/state';
 
 class SummCounter {
-  constructor(stateCounter = State.Counter) {
+  constructor(stateCounter = State.сounter) {
     this.sum = stateCounter;
   }
 
