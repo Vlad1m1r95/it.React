@@ -1,7 +1,7 @@
 import React from 'react';
-import './sass/app.sass'
-import PerentCounter from './component/Class/ParentCounter.Component';
-import Counter from './component/Class/Counter.Component'
+import './../../sass/app.sass'
+import PerentCounter from '../Class/ParentCounter.Component';
+import Counter from '../Class/Counter.Component'
 
 function App() {
   return (

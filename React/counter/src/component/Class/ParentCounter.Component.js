@@ -10,16 +10,10 @@ class PerentCounter extends React.Component {
     }
 
   }
-
   updateData(value) {
-    // this.setState({ counter: value })
-    // console.log(this.state.counter)
-    console.log(value)
+    this.setState({ counter: value })
+    console.log(this.state.counter) // меняется с отставанием на 1, но   метод render() не вызывается  \: = (
   }
-  // componentDidMount() {
-  //   return this.props.counter
-  // }
-
   render() {
     return (
       <div className="wrapParentCounter">

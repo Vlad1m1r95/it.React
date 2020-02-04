@@ -20,7 +20,7 @@ class Counter extends PerentCounter {
     this.setState({
       counter: relevantCounter
     },
-      this.updateData(this.state.counter)
+      this.updateData(this.state.counter) // ( метод родителя) передаем значение родителю 
     )
   }
   //Decrease and increase
