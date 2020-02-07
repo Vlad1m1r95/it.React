@@ -1,11 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './component/Function/App';
+import App from './view/app';
 
 ReactDOM.render(
-  <App
-    appGreeting='Привет, я счетчик !'
-  />,
+  <App />,
   document.getElementById('root')
 )
 
