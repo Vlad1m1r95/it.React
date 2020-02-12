@@ -5,7 +5,6 @@ import { setStateCounter } from './../storage/state/countersState';
 
 function Counter(props) {
   const {
-    counter,
     dataAttr,
     step,
     id,

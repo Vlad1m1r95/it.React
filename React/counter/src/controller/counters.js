@@ -25,6 +25,7 @@ class Counters extends React.Component {
     let state = 0
     getStateAllCounter().forEach(counterState => {
       state += counterState.state
+      console.log(state)
     })
 
     createStateGreetingsCounters(state)

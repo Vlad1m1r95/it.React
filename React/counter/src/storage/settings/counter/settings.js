@@ -60,7 +60,7 @@ const settingsCounters = {
       decriment: 2,
       incriment: 2,
     },
-  }
+  },
 }
 
 export default settingsCounters
