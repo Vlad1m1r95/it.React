@@ -1,7 +1,12 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbsUp, faUserGraduate } from '@fortawesome/free-solid-svg-icons'
-function NewEmployee(props) {
+
+function Employee(props) {
+	const {
+		settings: { name, position, contractor, id },
+	} = props
+
 	const iconTrue = (
 		<i>
 			<FontAwesomeIcon icon={faThumbsUp} />
@@ -12,16 +17,15 @@ function NewEmployee(props) {
 			<FontAwesomeIcon icon={faUserGraduate} />
 		</i>
 	)
-	console.log(props)
-	const { nameEmployee, pos, contractor } = props.settings
+
 	return (
-		<tr>
+		<tr id={id}>
 			<td>
-				{nameEmployee !== '' ? iconTeam : ''} {nameEmployee}
+				{name !== '' ? iconTeam : ''} {name}
 			</td>
-			<td>{pos}</td>
+			<td>{position}</td>
 			<td>{contractor ? iconTrue : ''}</td>
 		</tr>
 	)
 }
-export default NewEmployee
+export default Employee

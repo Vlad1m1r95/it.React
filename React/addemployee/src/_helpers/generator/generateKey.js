@@ -1,22 +1,12 @@
-function generateKey(n) {
-  let keys = []
-  let string = 'abcdefghi123456789ABCDEFGH'
-  let a = ''
-  let b = ''
-  let c = ''
-  let word = ''
+import nanoid from 'nanoid'
 
-  for (let i = 0; i < n; i++) {
-    a = string[Math.round(Math.random() * (string.length - 1))]
-    b = string[Math.round(Math.random() * (string.length - 1))]
-    c = string[Math.round(Math.random() * (string.length - 1))]
-    word = a + b + c
-    if (!keys.includes(word)) {
-      keys.push(word)
-    }
-  }
-  return keys
+const generateKey = (n, long) => {
+	const keys = []
+	for (let i = 1; i <= n; i++) {
+		keys.push(nanoid(long))
+	}
+	return keys
 }
-
-const keys = generateKey(20)
+const keys = generateKey(20, 3)
+console.log(keys)
 export default keys

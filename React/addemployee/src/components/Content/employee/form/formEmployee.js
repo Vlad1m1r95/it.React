@@ -2,12 +2,20 @@ import React from 'react'
 import '../../../../sass/form/form.sass'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
-import keys from './../../../../_helpers/generator/generateKey'
+import keys from '../../../../_helpers/generator/generateKey'
 
-function AddemployeeForm(props) {
-	const { FullName, title, Position, Add, contract } = props.field
-	const { add, change, click } = props.settings
-	const { nameEmployee, pos, contractor, team } = props.state
+function FormEmployee(props) {
+	let {
+		settings: {
+			title,
+			buttons,
+			field: { fullname, contract },
+			selectOptions,
+		},
+		handlers: { submit, change, click },
+		state: { name, position, contractor },
+	} = props
+
 	return (
 		<form id='addEmployee' className='Form-grid-emploayee'>
 			<fieldset>
@@ -18,22 +26,17 @@ function AddemployeeForm(props) {
 					{title}
 				</legend>
 				<input
-					name='nameEmployee'
-					value={nameEmployee}
+					name='name'
+					value={name}
 					onChange={change}
 					type='text'
-					placeholder={FullName}
+					placeholder={fullname}
 				/>
-				<select
-					defaultValue='default'
-					onChange={change}
-					name='pos'
-					id='Position'
-				>
+				<select value='default' onChange={change} name='position' id='position'>
 					<option value='default' name='default' disabled='disabled'>
-						{Position}
+						{position}
 					</option>
-					{props.options.map((option, index) => (
+					{selectOptions.map((option, index) => (
 						<option key={keys[index]} value={option}>
 							{option}
 						</option>
@@ -51,12 +54,19 @@ function AddemployeeForm(props) {
 						{contract}
 					</label>
 				</div>
-				<button onClick={add} className='Add-employee'>
-					{Add}
-				</button>
+				{buttons.map((button, index) => (
+					<button
+						key={keys[index]}
+						onClick={submit}
+						className='Add-employee'
+						data-action={button.action}
+					>
+						{button.text}
+					</button>
+				))}
 			</fieldset>
 		</form>
 	)
 }
 
-export default AddemployeeForm
+export default FormEmployee
