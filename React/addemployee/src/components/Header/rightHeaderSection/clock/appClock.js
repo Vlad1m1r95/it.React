@@ -1,13 +1,18 @@
+/* eslint-disable indent */
 import React from 'react'
 import Clock from './clock'
-class AppClock extends React.Component {
+class AppClock extends React.PureComponent {
 	constructor(props) {
 		super(props)
-		this.optionsData = this.CreateoptionsData.bind(this)
-		this.correctClock = this.getCorrectClock.bind(this)
-		this.correctDate = this.getCorrectDate.bind(this)
+
+		// this.correctDate = this.getCorrectDate.bind(this)
 		this.state = {
-			date: new Date(),
+			hours: new Date().getHours(),
+			dayOfTheWeek: this.formatDayWeek(new Date().getDay()),
+			minutes: new Date().getMinutes(),
+			dayOfMonth: new Date().getDate(),
+			month: this.formatMounth(new Date().getMonth()),
+			year: new Date().getFullYear(),
 		}
 	}
 	componentDidMount() {
@@ -18,124 +23,123 @@ class AppClock extends React.Component {
 	}
 
 	tick() {
-		this.setState({
-			date: new Date(),
-		})
-	}
-	getCorrectClock(d) {
-		let res = [d.getHours(), d.getMinutes()]
-			.map(function (x) {
-				return x < 10 ? '0' + x : x
+		const { minutes, dayOfTheWeek, hours, month, year } = this.state
+		let newMinutes = new Date().getMinutes()
+		if (newMinutes !== minutes) {
+			this.setState({
+				minutes: new Date().getMinutes(),
 			})
-			.join(':')
-		return res
-	}
-	getCorrectDate(d) {
-		let counter = 0
-		let res = [d.getDay(), d.getDate(), d.getMonth(), d.getFullYear()]
-			.map(function (x) {
-				let comma = null
-				if (counter === 0) {
-					counter++
-					if (x === d.getDay()) {
-						comma = true
-						switch (x) {
-							case 0:
-								x = 'Воскресенье'
-								break
-							case 1:
-								x = 'Понедельник'
-								break
-							case 2:
-								x = 'Вторник'
-								break
-							case 3:
-								x = 'Среда'
-								break
-							case 4:
-								x = 'Четверг'
-								break
-							case 5:
-								x = 'Пятница'
-								break
-							case 6:
-								x = 'Суббота'
-								break
-							default:
-								console.log('что-то пошло не так')
-								break
+			let newHours = new Date().getHours()
+			if (newHours !== hours) {
+				this.setState({
+					hours: new Date().getHours(),
+				})
+				let newDayOfTheWeek = this.formatDayWeek(new Date().getDay())
+				if (newDayOfTheWeek !== dayOfTheWeek) {
+					this.setState({
+						dayOfTheWeek: this.formatDayWeek(new Date().getDay()),
+						dayOfMonth: new Date().getDate(),
+					})
+					let newMounth = new Date().getMonth()
+					if (newMounth !== month) {
+						this.setState({
+							month: new Date().getMonth(),
+						})
+						let newYear = new Date().getFullYear()
+						if (newYear !== year) {
+							this.setState({
+								year: new Date().getFullYear(),
+							})
 						}
 					}
 				}
-
-				if (x === d.getMonth()) {
-					switch (x) {
-						case 0:
-							x = 'Января'
-							break
-						case 1:
-							x = 'Февраля'
-							break
-						case 2:
-							x = 'Марта'
-							break
-						case 3:
-							x = 'Апреля'
-							break
-						case 4:
-							x = 'Мая'
-							break
-						case 5:
-							x = 'Июня'
-							break
-						case 6:
-							x = 'Июля'
-							break
-						case 7:
-							x = 'Августа'
-							break
-						case 8:
-							x = 'Сентября'
-							break
-						case 9:
-							x = 'Октября'
-							break
-						case 10:
-							x = 'Ноября'
-							break
-						case 11:
-							x = 'Декабря'
-							break
-						default:
-							console.log('что-то пошло не так')
-							break
-					}
-				}
-
-				return comma === true ? x + ',' : x
-			})
-			.join(' ')
-		return res
-	}
-	CreateoptionsData() {
-		const options = {
-			era: 'long',
-			year: 'numeric',
-			month: 'long',
-			day: 'numeric',
-			weekday: 'long',
-			timezone: 'UTC',
-			hour: 'numeric',
-			minute: 'numeric',
-			second: 'numeric',
+			}
 		}
-		return options
+	}
+
+	formatDayWeek(day) {
+		switch (day) {
+			case 0:
+				day = 'Воскресенье'
+				break
+			case 1:
+				day = 'Понедельник'
+				break
+			case 2:
+				day = 'Вторник'
+				break
+			case 3:
+				day = 'Среда'
+				break
+			case 4:
+				day = 'Четверг'
+				break
+			case 5:
+				day = 'Пятница'
+				break
+			case 6:
+				day = 'Суббота'
+				break
+			default:
+				console.log('что-то пошло не так')
+				break
+		}
+		return day
+	}
+	formatMounth(mounth) {
+		switch (mounth) {
+			case 0:
+				mounth = 'Января'
+				break
+			case 1:
+				mounth = 'Февраля'
+				break
+			case 2:
+				mounth = 'Марта'
+				break
+			case 3:
+				mounth = 'Апреля'
+				break
+			case 4:
+				mounth = 'Мая'
+				break
+			case 5:
+				mounth = 'Июня'
+				break
+			case 6:
+				mounth = 'Июля'
+				break
+			case 7:
+				mounth = 'Августа'
+				break
+			case 8:
+				mounth = 'Сентября'
+				break
+			case 9:
+				mounth = 'Октября'
+				break
+			case 10:
+				mounth = 'Ноября'
+				break
+			case 11:
+				mounth = 'Декабря'
+				break
+			default:
+				console.log('что-то пошло не так')
+				break
+		}
+		return mounth
 	}
 	render() {
+		const { minutes, hours, dayOfMonth, dayOfTheWeek, year, month } = this.state
 		return (
 			<Clock
-				clock={this.correctClock(this.state.date)}
-				data={this.correctDate(this.state.date)}
+				dayOfMonth={dayOfMonth}
+				dayOfTheWeek={dayOfTheWeek}
+				year={year}
+				hours={hours}
+				minutes={minutes}
+				month={month}
 			/>
 		)
 	}

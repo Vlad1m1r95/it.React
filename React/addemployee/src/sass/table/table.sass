@@ -36,9 +36,8 @@
     grid-template-columns: 3fr 2fr 1fr
     align-items: center
     border-bottom: 1px solid $gray
-    &:first-child
-      border: none
-      height: 3em
+    &:last-child
+      border-bottom: 1px solid $gray
     td
       display: flex
       justify-content: center
@@ -48,11 +47,11 @@
       &:last-child
         border: none
 .Border-table
-  border-top: 1px solid $gray
   border-left: 1px solid $gray
   border-right: 1px solid $gray
 .Table-team-body
-  border-bottom: 1px solid $gray 
-
+  // border-bottom: 1px solid $gray 
+.Table-team-header
+  border-top: 1px solid $gray
 .changedEmployee
   color: $gray 
