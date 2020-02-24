@@ -1,0 +1,73 @@
+.GridStyle
+  display: grid
+  align-items: center
+  grid-template-columns:   15% auto 15%  
+  grid-template-rows: auto
+  grid-template-areas: "header header header "
+  grid-gap: 2% 4%
+ 
+.Header
+  display: grid
+  grid-area: header
+  padding: 0 3%
+  grid-template-rows: subgrid
+  grid-template-columns:   10% auto 15%  
+  grid-template-rows: auto
+  grid-gap: 2% 4%
+.Section-left-header
+  grid-column-start: 1
+  grid-column-end: 1
+  display: flex
+  align-items: center
+  justify-content: space-between
+.Section-right-header
+  grid-column-start: 3
+  grid-column-end: 3
+  display: flex
+  align-items: center
+  justify-content: center
+.Section-center-Header
+  grid-column-start: 2
+  grid-column-end: 2
+  display: flex
+  align-items: center
+  justify-content: center 
+ 
+.Align-center
+  justify-self: center
+
+.Info-status-message
+  display: grid
+  width: 100% 
+  grid-template-columns:   10% 10% 10%  
+  grid-template-rows: auto
+  justify-content: center
+  i
+    display: flex
+    justify-content: center
+
+.Content-grid
+  display: grid  
+  grid-template-rows: auto
+  grid-gap: 5% 5%
+  padding: 0 4%
+
+
+
+.collums-1fr
+  grid-template-columns:   1fr 
+.collums-2fr
+  grid-template-columns:   1fr 1fr 
+.collums-3fr 
+  grid-template-columns:   1fr 1fr 1fr
+.collums-4fr
+  grid-template-columns:   1fr 1fr 1fr 1fr
+.collums-5fr
+  grid-template-columns:   1fr 1fr 1fr 1fr 1fr 
+.collums-6fr
+  grid-template-columns:   auto auto auto auto auto auto
+.collums-7fr
+  grid-template-columns:   1fr 1fr 1fr 1fr 1fr 1fr 1fr 
+.collums-8fr
+  grid-template-columns:   1fr 1fr 1fr 1fr 1fr 1fr  1fr 1fr
+
