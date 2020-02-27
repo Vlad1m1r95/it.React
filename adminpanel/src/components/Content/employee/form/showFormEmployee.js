@@ -1,5 +1,5 @@
 import React from 'react'
-import FormEmployee from './formEmployee'
+import EmployeeEditor from './formEmployee'
 import nanoid from 'nanoid'
 
 class ShowFormEmployee extends React.Component {
@@ -31,6 +31,13 @@ class ShowFormEmployee extends React.Component {
 			click: this.click,
 		}
 	}
+	// validataField = e => {
+	// 	this.props.form.validateFields((err, values) => {
+	// 		if (!err) {
+	// 			console.log('Received values of form: ', values)
+	// 		}
+	// 	})
+	// }
 	resetState() {
 		const initialState = {
 			name: '',
@@ -71,7 +78,7 @@ class ShowFormEmployee extends React.Component {
 	}
 	handleSubmit(e) {
 		e.preventDefault()
-
+		// this.validataField()
 		if (e.target.dataset.action !== 'edit') {
 			this.setState({ key: nanoid(3) })
 			this.addEmployeeInTable('add')
@@ -102,13 +109,24 @@ class ShowFormEmployee extends React.Component {
 			this.setState(this.props.defaultValue)
 			this.setState({ index: this.props.indexEmployee })
 			this.props.settings.title = 'Редактирование сотрудника'
-			this.props.settings.buttons = [{ text: 'Изменить', action: 'edit' }]
+			console.log(this.props.defaultValue)
+			const { name, position } = this.props.defaultValue
+			console.log(name === '')
+			console.log(position === '')
+			if (name !== '' && position !== '') {
+				this.props.settings.buttons = [{ text: 'Изменить', action: 'edit' }]
+			} else {
+				this.props.settings.title = 'Добавление нового сотрудника'
+				this.props.settings.buttons = [
+					{ text: 'Добавить сотрудника', action: 'add' },
+				]
+			}
 		}
 	}
 
 	render() {
 		return (
-			<FormEmployee
+			<EmployeeEditor
 				state={this.state}
 				defaultValue={this.props.defaultValue}
 				handlers={this.handlers}

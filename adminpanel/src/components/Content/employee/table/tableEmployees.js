@@ -10,11 +10,24 @@ import Employee from './employee'
 import keys from '../../../../_helpers/generator/generateKey'
 import { Table, Input, Button, Icon, Divider, Tag } from 'antd'
 import './style/tableEmployee.sass'
+import Confirm from './../../../_blocks/button/confirm/confirm'
 
 class TableEmployees extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = { filteredInfo: null, sortedInfo: null }
+		const {
+			handlers: { edit, deleteEmployee },
+		} = this.props
+		this.confirmSettingsDelete = {
+			title: 'Вы точно хотите удалить сотрудника',
+			content: 'Удалить?',
+			okText: 'Да',
+			okType: 'danger',
+			cancelText: 'нет',
+			ok: deleteEmployee,
+			cancel: console.log('Cancel'),
+		}
 	}
 
 	handleChange = (pagination, filters, sorter) => {
@@ -58,7 +71,7 @@ class TableEmployees extends React.Component {
 				dataIndex: 'name',
 				key: 'name',
 				filters: [
-					{ text: 'Joe', value: 'Joe' },
+					{ text: 'Владимир', value: 'Владимир' },
 					{ text: 'Jim', value: 'Jim' },
 				],
 				filteredValue: filteredInfo.name || null,
@@ -72,6 +85,12 @@ class TableEmployees extends React.Component {
 				dataIndex: 'position',
 				key: 'position',
 				sorter: (a, b) => a.age - b.age,
+				filters: [
+					{ text: 'Бухгалтер', value: 'Бухгалтер' },
+					{ text: 'Aдминистратор', value: 'Aдминистратор' },
+				],
+				filteredValue: filteredInfo.position || null,
+				onFilter: (value, record) => record.position.include(value),
 				sortOrder: sortedInfo.columnKey === 'position' && sortedInfo.order,
 				ellipsis: true,
 			},
@@ -99,7 +118,7 @@ class TableEmployees extends React.Component {
 				},
 			},
 			{
-				title: 'Action',
+				// title: 'Action',
 				key: 'action',
 				render: (text, record) => (
 					<span>
@@ -107,9 +126,11 @@ class TableEmployees extends React.Component {
 							Редактировать{' '}
 						</a>
 						<Divider type='vertical' />
-						<a href='/delete' onClick={deleteEmployee}>
-							Удалить
-						</a>
+						<Confirm
+							type='delete'
+							link='удалить'
+							confirmSettings={this.confirmSettingsDelete}
+						/>
 					</span>
 				),
 			},

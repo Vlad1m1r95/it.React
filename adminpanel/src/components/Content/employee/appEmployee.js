@@ -26,8 +26,10 @@ class Appemployee extends React.Component {
 			value: {
 				name: '',
 				position: '',
-				contractor: '',
-				id: '',
+				contractor: true,
+				contractorText: '',
+				action: '',
+				key: '',
 			},
 			selectOptions: [
 				'Администратор',
@@ -91,14 +93,15 @@ class Appemployee extends React.Component {
 		this.arrayEmployees.splice(index, 1)
 		console.log(this.arrayEmployees)
 	}
-	deleteEmployee(e) {
-		e.preventDefault()
-		const target = e.target
+	deleteEmployee(target) {
+		// e.preventDefault()
+		// const target = e.target
 		const targetIndex = target.closest('tr').dataset.rowKey
 		this.deleteHash(targetIndex)
 		console.log(this.arrayEmployees)
-
 		this.setState({ employees: this.arrayEmployees })
+		console.log(this.state.editingEmployee)
+		this.setState({ editEmployee: this.formSettings.value })
 	}
 	render() {
 		return (
