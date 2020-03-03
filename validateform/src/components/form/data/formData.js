@@ -13,7 +13,7 @@ export const errors = {
 }
 export const messageSubmit = {
   success: `Ура вы вошли! 😎`,
-  error: `Что то пошло не так.😔`,
+  error: `Что-то пошло не так.😔`,
   forgotPass: `Может забыли пароль?`,
 }
 export const fildNameValidation = ['name', 'password', 'email']
