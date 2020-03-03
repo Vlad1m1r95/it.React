@@ -24,7 +24,7 @@ const catchError = FieldComponent => {
       return (
         <div className="input-unvalid animated  pulse animate-errors-input">
           <GetClass {...this.props} />
-          <span className="animated  pulse animate-errors-label" htmlFor="name">
+          <span className="animated  pulse animate-errors-label">
             {errorText}
           </span>
         </div>
