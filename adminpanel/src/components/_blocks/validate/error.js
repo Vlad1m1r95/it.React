@@ -1,45 +1,12 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-constant-condition */
-import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
-import keys from '../../../../_helpers/generator/generateKey'
-import ButtonAdd from './../../../_blocks/button/button'
+import React from 'react';
 import { Form, Icon, Input, Button, Checkbox, Select } from 'antd'
-import './style/formEmployee.sass'
-import Employee from './../table/employee'
-import ValidateForm from './../../../HOC/validate/validate'
-import ErrorText from './../../../_blocks/validate/error';
-
-class FormEmployee extends React.Component {
-  constructor(props) {
-    super(props)
-    this.submit = this.submitHandler.bind(this)
-    this.checkImmutable = this.ImmutableCheckbox.bind(this)
-    this.state = { immutable: false }
-  }
-
-  ImmutableCheckbox() {
-    let rules = ''
-    const { settings: selectOptions } = this.props
-    for (let position in selectOptions) {
-      rules = position === 'Администратор' || 'Бухгалтер' ? true : false
-    }
-  }
-  submitHandler(e) {
-    let {
-      handlers: { submit },
-    } = this.props
-    e.preventDefault()
-    submit(e)
-    // this.props.form.validateFields((err, values) => {
-    //   if (!err) {
-    //     submit(e)
-    //     setTimeout(() => this.props.form.resetFields(), 300)
-    //   }
-    //   console.log(this.props.state)
-    // })
-  }
+import keys from './../../../_helpers/generator/generateKey';
+class FormCustomValid extends React.Component {
+  // componentDidUpdate(prevProps) {
+  //   const { value, set } = this.props
+  //   prevProps !== this.props ? set(value) : console.log('null')
+  // }
   render() {
     let {
       settings: {
@@ -50,7 +17,9 @@ class FormEmployee extends React.Component {
       },
       handlers: { submit, change, click },
       state: { name, position, contractor },
+      errorText, len
     } = this.props
+    console.log(this.props)
     const { Option } = Select
     // const { getFieldDecorator } = this.props.form
     return (
@@ -71,7 +40,8 @@ class FormEmployee extends React.Component {
             type="text"
             placeholder={fullName}
             value={name}
-          />
+
+          /> <label htmlFor="name">{errorText}: {len}</label>
           {/* <ValidateForm value={name} errorText={`Меньше чем`} len={5} /> */}
           {/* {getFieldDecorator('name', {
       			// getValueProps: e => submit(e),
@@ -142,7 +112,4 @@ class FormEmployee extends React.Component {
   }
 }
 
-// const EmployeeEditor = Form.create({ name: 'Form_employee' })(FormEmployee)
-
-// export default EmployeeEditor
-export default FormEmployee
+export default FormCustomValid
