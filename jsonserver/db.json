@@ -1,0 +1,196 @@
+{
+  "employees": [
+    {
+      "name": "Ярусов Мирон Натанович",
+      "position": "Администратор",
+      "contractor": "Контрактор",
+      "key": "3PN",
+      "id": "3PN"
+    },
+    {
+      "name": "Ярусов Мирон Натанович",
+      "position": "Дизайнер",
+      "contractor": "Фрилансер",
+      "key": "OvR",
+      "id": "OvR"
+    },
+    {
+      "name": "Соломина Елена Леонидовна",
+      "position": "Интернет-маркетолог",
+      "contractor": "Контрактор",
+      "key": "eS8",
+      "id": "eS8",
+      "password": "efusNq"
+    }
+  ],
+  "statistics": [
+    {
+      "id": 0,
+      "year": 2020,
+      "month": "Январь",
+      "ordersComplite": 100,
+      "ordersFallen": 15,
+      "visitors": 1000,
+      "goods": 35,
+      "totalСostOfGoods": 1200,
+      "objectiveOrdersComplite": 200,
+      "objectiveConversion": 25
+    },
+    {
+      "id": 1,
+      "year": 2020,
+      "month": "Февраль",
+      "ordersComplite": 100,
+      "ordersFallen": 15,
+      "visitors": 1000,
+      "goods": 35,
+      "totalСostOfGoods": 1200,
+      "objectiveOrdersComplite": 200,
+      "objectiveConversion": 25
+    },
+    {
+      "id": 2,
+      "year": 2020,
+      "month": "Март",
+      "ordersComplite": 100,
+      "ordersFallen": 15,
+      "visitors": 1000,
+      "goods": 35,
+      "totalСostOfGoods": 1200,
+      "objectiveOrdersComplite": 200,
+      "objectiveConversion": 25
+    },
+    {
+      "id": 3,
+      "year": 2020,
+      "month": "Март",
+      "ordersComplite": 100,
+      "ordersFallen": 15,
+      "visitors": 1000,
+      "goods": 35,
+      "totalСostOfGoods": 1200,
+      "objectiveOrdersComplite": 200,
+      "objectiveConversion": 25
+    },
+    {
+      "id": 4,
+      "year": 2020,
+      "month": "Апрель",
+      "ordersComplite": 100,
+      "ordersFallen": 15,
+      "visitors": 1000,
+      "goods": 35,
+      "totalСostOfGoods": 1200,
+      "objectiveOrdersComplite": 200,
+      "objectiveConversion": 25
+    },
+    {
+      "id": 5,
+      "year": 2020,
+      "month": "Апрель",
+      "ordersComplite": 100,
+      "ordersFallen": 15,
+      "visitors": 1000,
+      "goods": 35,
+      "totalСostOfGoods": 1200,
+      "objectiveOrdersComplite": 200,
+      "objectiveConversion": 25
+    },
+    {
+      "id": 6,
+      "year": 2020,
+      "month": "Май",
+      "ordersComplite": 100,
+      "ordersFallen": 15,
+      "visitors": 1000,
+      "goods": 35,
+      "totalСostOfGoods": 1200,
+      "objectiveOrdersComplite": 200,
+      "objectiveConversion": 25
+    },
+    {
+      "id": 7,
+      "year": 2020,
+      "month": "Июнь",
+      "ordersComplite": 100,
+      "ordersFallen": 15,
+      "visitors": 1000,
+      "goods": 35,
+      "totalСostOfGoods": 1200,
+      "objectiveOrdersComplite": 200,
+      "objectiveConversion": 25
+    },
+    {
+      "id": 8,
+      "year": 2020,
+      "month": "Июль",
+      "ordersComplite": 100,
+      "ordersFallen": 15,
+      "visitors": 1000,
+      "goods": 35,
+      "totalСostOfGoods": 1200,
+      "objectiveOrdersComplite": 200,
+      "objectiveConversion": 25
+    },
+    {
+      "id": 8,
+      "year": 2020,
+      "month": "Август",
+      "ordersComplite": 100,
+      "ordersFallen": 15,
+      "visitors": 1000,
+      "goods": 35,
+      "totalСostOfGoods": 1200,
+      "objectiveOrdersComplite": 200,
+      "objectiveConversion": 25
+    },
+    {
+      "id": 8,
+      "year": 2020,
+      "month": "Сентябрь",
+      "ordersComplite": 100,
+      "ordersFallen": 15,
+      "visitors": 1000,
+      "goods": 35,
+      "totalСostOfGoods": 1200,
+      "objectiveOrdersComplite": 200,
+      "objectiveConversion": 25
+    },
+    {
+      "id": 9,
+      "year": 2020,
+      "month": "Октябрь",
+      "ordersComplite": 100,
+      "ordersFallen": 15,
+      "visitors": 1000,
+      "goods": 35,
+      "totalСostOfGoods": 1200,
+      "objectiveOrdersComplite": 200,
+      "objectiveConversion": 25
+    },
+    {
+      "id": 10,
+      "year": 2020,
+      "month": "Ноябрь",
+      "ordersComplite": 100,
+      "ordersFallen": 15,
+      "visitors": 1000,
+      "goods": 35,
+      "totalСostOfGoods": 1200,
+      "objectiveOrdersComplite": 200,
+      "objectiveConversion": 25
+    },
+    {
+      "id": 11,
+      "year": 2020,
+      "month": "Декабрь",
+      "ordersComplite": 100,
+      "ordersFallen": 15,
+      "visitors": 1000,
+      "goods": 35,
+      "totalСostOfGoods": 1200,
+      "objectiveOrdersComplite": 200,
+      "objectiveConversion": 25
+    }
+  ]
+}

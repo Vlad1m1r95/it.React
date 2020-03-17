@@ -9,7 +9,7 @@ body
   height: 100%
   overflow: none
   cursor: pointer
-  font-size: Roboto
+  font-family: Roboto
   font-weight: normal
   color: #C2C2C2
 .header
@@ -24,8 +24,6 @@ body
   z-index: 100
   left: 0 
   bottom: 0
-.blue
-  background: #3294D5  
 .sidebar
   position: fixed
   top: 90px
@@ -40,7 +38,7 @@ body
   flex-grow: 1
   overflow-y: none
 .open-sidebar
-  margin-left: 200px
+  margin-left: 180px
 .close-sidebar
   margin-left: 75px
 .content-relative
@@ -49,3 +47,85 @@ main
   padding: 100px 30px
 .ant-layout
   background: #fff
+
+.link_icon
+  float: right
+  font-size: 10px
+  color : #C2C2C2
+  a
+   color : #9FD9FF
+.switch-themes
+  position: fixed
+  right: 0
+  margin-top: 20px
+  margin-right: 20px
+
+
+
+.theme-dark
+  // label
+  //  background: transparent 
+  header
+   background: #19171A
+   box-shadow: 0 2px 8px 0 rgba(0,0,0,0.65)
+  main
+   background: #171518
+  .menu-sidebar
+   background: #151117
+  footer
+   background: #19171A
+   box-shadow: 0 2px 8px 0 rgba(0,0,0,0.65)
+  .theme-form
+    legend
+      color: #ffffff 
+  .theme-table
+   box-shadow: 0 2px 8px 0 rgba(0,0,0,0.65) 
+   background: #19171A
+  form
+   padding: 20px
+   height: 100%
+   box-shadow: 0 2px 8px 0 rgba(0,0,0,0.65)
+  .ant-table
+   padding: 20px
+   background: transparent
+   &:hover
+    background: transparent  !important
+  .ant-input-prefix
+    color: #fff
+    opacity: 0.75
+  .theme-item
+    background: rgba(0,0,0,0.65)
+    // color: #000
+  .ant-empty-description  
+    &:hover, &:target &:focus
+      background: #151117
+    input
+     background: rgba(0,0,0,0.65) 
+     color: #fff
+    .ant-select-selector
+     background: rgba(0,0,0,0.65) 
+     color: #fff
+     opacity: 0.75
+    .ant-select-arrow, .ant-select-selection-placeholder
+     color: #fff
+     opacity:  1
+     span
+      color: #fff
+      opacity: 0.75
+     &:hover, &:target &:focus
+      background: #151117
+      opacity: 0.75
+.theme-light
+  header
+   background: #fff
+   box-shadow: 0 2px 8px #f0f1f2 
+   #clock
+    span,
+     color: #3294D5
+    .local-data-time 
+     color: #3294D5 
+  main
+   background: #171518 
+   background: #fff
+  .menu-sidebar
+   background: #ffffff

@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "json-server-auth": "^1.2.1"
+  }
+}
