@@ -6,8 +6,6 @@ import {
 } from './../actionTypes'
 import { createReducer } from '@reduxjs/toolkit'
 
-
-
 export const editEmployeeReduser = createReducer(
   {},
   {
@@ -16,7 +14,8 @@ export const editEmployeeReduser = createReducer(
     },
 
     [RESET_EDIT_EMPLOYEE]: (state, action) => action.payload,
-  })
+  }
+)
 
 // [ADD_EDIT_EMPLOYEE]: (state, action) => {
 //   return { ...state, data: action.payload }
@@ -27,13 +26,15 @@ export const addEditEmployeeReduser = createReducer(
   {
     [ADD_EDIT_EMPLOYEE]: (state, action) => {
       return { ...state, data: action.payload }
-    }
-  })
+    },
+  }
+)
 
 export const addEmployeeReduser = createReducer(
   {},
   {
     [ADD_EMPLOYEE]: (state, action) => {
       return { ...state, data: action.payload }
-    }
-  })
+    },
+  }
+)

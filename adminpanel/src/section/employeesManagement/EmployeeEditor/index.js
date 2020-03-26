@@ -8,10 +8,7 @@ import createForm from './../../../common/hoc/form/form'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { actions } from './../../../actions'
 import useFetch from './../../../common/hooks/useFetch'
-import { ADD_EDIT_EMPLOYEE, ADD_EMPLOYEE } from './../../../actionTypes/';
-
-
-
+import { ADD_EDIT_EMPLOYEE, ADD_EMPLOYEE } from './../../../actionTypes/'
 
 function СontrolFormEmployee(props) {
   const [form] = Form.useForm()
@@ -22,12 +19,14 @@ function СontrolFormEmployee(props) {
   const [mode, setMode] = useState(add)
   const dispatch = useDispatch()
 
-
   const ADD_FETCH_EDIT_EMPLOYEE = 'editEmployee'
   const ADD_FETCH_EMPLOYEE = 'addEmployee'
 
   const [buttonText, setButtonText] = useState(add.text)
-  const editEmployee = useSelector(state => state.editEmployeeReduser.data, shallowEqual)
+  const editEmployee = useSelector(
+    state => state.editEmployeeReduser.data,
+    shallowEqual
+  )
 
   const { setReq, res } = useFetch()
   const { isLoading, data } = res
@@ -42,8 +41,6 @@ function СontrolFormEmployee(props) {
         setMode(add)
       }
     }
-
-
   }, [editEmployee])
 
   const onFinish = values => {
@@ -59,8 +56,7 @@ function СontrolFormEmployee(props) {
       if (isLoading === true) {
         setButtonText(edit.text)
         setMode(edit)
-      }
-      else {
+      } else {
         setButtonText(add.text)
         setMode(add)
       }

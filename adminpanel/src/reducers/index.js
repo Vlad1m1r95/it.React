@@ -1,5 +1,9 @@
 import { combineReducers } from 'redux'
-import { addEmployeeReduser, editEmployeeReduser, addEditEmployeeReduser } from './employee'
+import {
+  addEmployeeReduser,
+  editEmployeeReduser,
+  addEditEmployeeReduser,
+} from './employee'
 import { statisticReduser, sampleStatisticsReduser } from './statistics'
 import { authDataReduser } from './auth'
 

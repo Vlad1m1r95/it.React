@@ -6,41 +6,34 @@ import { Table } from 'antd'
 import './style/tableEmployee.sass'
 import { actions } from '../../../actions'
 import columns from './settings/collums/collums'
-import hooks from './../../../common/hooks/index';
+import hooks from './../../../common/hooks/index'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
-import { EDIT_EMPLOYEE } from './../../../actionTypes/';
-
-
+import { EDIT_EMPLOYEE } from './../../../actionTypes/'
 
 function TableEmployees(props) {
-  const {
-    editEmployee
-  } = props
+  const { editEmployee } = props
 
   const { useEdibleData, useFetch } = hooks
   const GET_EMPLOYEES = 'getEmployees'
   const DELETE_EMPLOYEES = 'deleteEmployee'
-  const addEditEmployee = useSelector(state => state.addEditEmployeeReduser.data, shallowEqual)
-  const addEmployee = useSelector(state => state.addEmployeeReduser.data, shallowEqual)
+  const addEditEmployee = useSelector(
+    state => state.addEditEmployeeReduser.data,
+    shallowEqual
+  )
+  const addEmployee = useSelector(
+    state => state.addEmployeeReduser.data,
+    shallowEqual
+  )
 
-
-
-  const { setReq, res, } = useFetch()
+  const { setReq, res } = useFetch()
   const { isLoading, data: employees } = res
-
-
 
   useEffect(() => {
     setReq(GET_EMPLOYEES, 'null', [addEditEmployee, addEmployee])
   }, [GET_EMPLOYEES, employees, addEditEmployee, addEmployee])
 
-
-
-
-
   const edibleDataEmployees = useEdibleData(employees, 'Array')
   const dispatch = useDispatch()
-
 
   const clickHandler = e => {
     e.stopPropagation()
@@ -61,12 +54,13 @@ function TableEmployees(props) {
       const emloyee = e.target.closest('tr')
       const emloyeeID = emloyee.dataset.rowKey
 
-      let targetEmployee = edibleDataEmployees.find(emloyee => emloyee.key === emloyeeID)
+      let targetEmployee = edibleDataEmployees.find(
+        emloyee => emloyee.key === emloyeeID
+      )
       console.log(targetEmployee)
       const tag = targetEmployee.contractor === 'Контрактор' ? true : false
       targetEmployee = { ...targetEmployee, contractor: tag }
       dispatch({ type: EDIT_EMPLOYEE, payload: targetEmployee })
-
     }
   }
   return (
@@ -81,9 +75,5 @@ function TableEmployees(props) {
     </div>
   )
 }
-
-
-
-
 
 export default TableEmployees

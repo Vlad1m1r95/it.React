@@ -100,10 +100,3 @@ const DateSlider = ({ period, mode, position, callback }) => {
   return renderMode() || null
 }
 export default DateSlider
-
-// const sliderSettings = {
-//   marks: ,
-//   min: 1,
-//   max: 12,
-//   defaultValue: [1]
-// }

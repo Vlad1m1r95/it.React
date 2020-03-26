@@ -3,7 +3,6 @@ import './style/clock.sass'
 import hooks from './../../../hooks/index'
 
 function ClockClassic() {
-
   const deg = 6
   let day = new Date()
   let hh = day.getHours() * 30
@@ -26,7 +25,7 @@ function ClockClassic() {
   }, 1000)
   return (
     <div className="clock-wrap">
-      <div className="clock-classik" >
+      <div className="clock-classik">
         <div className="hour">
           <div style={{ transform: hour }} className="hr" id="hr"></div>
         </div>

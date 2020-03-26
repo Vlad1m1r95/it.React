@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react'
-import Chart from 'chart.js';
+import Chart from 'chart.js'
 import {
   Form,
   Button,
@@ -17,17 +17,10 @@ import { HomeOutlined, UserOutlined } from '@ant-design/icons'
 import './style/dashboard.sass'
 import SliderFilterProgress from './sliderFilter'
 import { connect } from 'react-redux'
-// import { slices } from './../../../../slice/index';
-import {
-  asyncGetDataAndUpdateStore,
-  asyncAction,
-} from './../../common/helpers/async/index'
-// import { useEffect } from 'react';
+
 import { actions } from './../../actions/'
 import ComprehensiveProgress from './../../common/companents/progress/ComprehensiveProgress'
 import ChartCircle from './../../common/companents/chart/chart2'
-
-
 
 const progress = {
   mounth: {
@@ -48,33 +41,6 @@ function Board(props) {
   console.log(props.setStatistics)
   const { Title } = Typography
 
-  // useEffect(() => {
-  //   getStatistics()
-  // }, [])
-
-
-  // const Bar = new Chart(ctx, {
-  //   type: 'bar',
-  //   data: {
-  //     datasets: [{
-  //       barPercentage: 0.5,
-  //       barThickness: 6,
-  //       maxBarThickness: 8,
-  //       minBarLength: 2,
-  //       data: [10, 20, 30, 40, 50, 60, 70]
-  //     }]
-  //   },
-  //   options: {
-  //     scales: {
-  //       xAxes: [{
-  //         gridLines: {
-  //           offsetGridLines: true
-  //         }
-  //       }]
-  //     }
-  //   }
-  // });
-
   const currentАmount = current => {
     return <span className="number-current"> {current} тыс.руб </span>
   }
@@ -85,15 +51,10 @@ function Board(props) {
   const settingsProgress = { title: 'Конверсия', extra: 20, percent: 50 }
   return (
     <section id="Dushboard">
-
-      {/* <Row type="flex" justify="center" gutter={[32, 72]}>
-        <Col span={16}><SliderFilterProgress /></Col>
-      </Row> */}
       <Row type="flex" className="row-col" gutter={[32, 72]}>
         <Col className="title-col" span={24}>
           <Title>Статистика за Март</Title>
           {/* <h1 className="title">Статистика за Март</h1> */}
-
         </Col>
         <Col span={20}>
           <Row align="middle" justify="space-around">
@@ -121,25 +82,16 @@ function Board(props) {
           </Row>
         </Col>
 
-
         <Col span={4}>
           <Card className="card-filter">
             {' '}
             <SliderFilterProgress period={12} position="horizontal" />
           </Card>
         </Col>
-
-
       </Row>
-      {/* <Row type="flex" gutter={[32, 72]}>
-        <Col span={6}>
-          <ChartwithSmiles />
-        </Col>
-      </Row> */}
     </section>
   )
 }
-
 
 const { setStatistics } = actions
 const mapDispatchToProps = {

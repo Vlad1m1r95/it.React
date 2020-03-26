@@ -1,22 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 
-import { Upload, Modal } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
-import useFetch from './../../../../../hooks/useFetch';
-import { actions } from './../../../../../../actions/index';
+import { Upload, Modal } from 'antd'
+import { PlusOutlined } from '@ant-design/icons'
+import useFetch from './../../../../../hooks/useFetch'
+import { actions } from './../../../../../../actions/index'
 
 function getBase64(file) {
-
   return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
     console.log(reader)
     console.log(file)
-    reader.onload = () => resolve(reader.result);
+    reader.onload = () => resolve(reader.result)
 
-    reader.onerror = error => reject(error);
-
-  });
+    reader.onerror = error => reject(error)
+  })
 }
 const Uploader = () => {
   const [previewVisible, setPreviewVisible] = useState(false)
@@ -29,8 +27,7 @@ const Uploader = () => {
 
   const handleChange = ({ fileList }, e) => {
     const dataURLs = []
-    fileList.forEach((item) => {
-
+    fileList.forEach(item => {
       if (item.thumbUrl !== undefined) {
         console.log(item.thumbUrl)
         dataURLs.push(item.thumbUrl)
@@ -41,20 +38,19 @@ const Uploader = () => {
 
     setReq('testUpload', dataURLs)
   }
-  const transformFile = (file) => {
-
-    return file = JSON.stringify(file)
+  const transformFile = file => {
+    return (file = JSON.stringify(file))
   }
 
   const handlePreview = async file => {
     console.log('ddd')
     if (!file.url && !file.preview) {
-      file.preview = await getBase64(file.originFileObj);
+      file.preview = await getBase64(file.originFileObj)
     }
 
     setPreviewImage(file.url || file.preview)
     setPreviewVisible(true)
-  };
+  }
   const uploadButton = (
     <div>
       <PlusOutlined />
@@ -62,19 +58,17 @@ const Uploader = () => {
     </div>
   )
   return (
-
     <div className="clearfix">
       <Upload
         action="http://localhost:4000/images"
         headers={{
           'Content-Type': 'text/html',
-          'authorization': 'Bearer'
+          authorization: 'Bearer',
         }}
         listType="picture-card"
         fileList={fileList}
         onPreview={handlePreview}
         onChange={handleChange}
-
       >
         {fileList.length >= 1 ? null : uploadButton}
       </Upload>
@@ -82,7 +76,7 @@ const Uploader = () => {
         <img alt="example" style={{ width: '100%' }} src={previewImage} />
       </Modal>
     </div>
-  );
+  )
 }
 
 export default Uploader

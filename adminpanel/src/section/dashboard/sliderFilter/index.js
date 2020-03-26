@@ -4,9 +4,8 @@ import './style/sliderFilterProgress.sass'
 import DateSlider from './../../../common/companents/sliderData/'
 import { asyncAction } from '../../../common/helpers/async'
 import getQueryParams from './../../../common/helpers/getQueryParams/getQueryParams'
-import useFetch from './../../../common/hooks/useFetch';
-import getMissingNumbers from './../../../common/helpers/array/getMissingNumbers';
-
+import useFetch from './../../../common/hooks/useFetch'
+import getMissingNumbers from './../../../common/helpers/array/getMissingNumbers'
 
 const SliderFilterProgress = props => {
   const [sliderMode, setSliderMode] = useState('month')

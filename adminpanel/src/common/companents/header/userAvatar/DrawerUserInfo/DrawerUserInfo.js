@@ -1,16 +1,29 @@
 import React, { useState } from 'react'
-import { Typography, Avatar, Badge, Tag, Tabs, Form, Button, Col, Row, Input, Select, Drawer, DatePicker } from 'antd';
+import {
+  Typography,
+  Avatar,
+  Badge,
+  Tag,
+  Tabs,
+  Form,
+  Button,
+  Col,
+  Row,
+  Input,
+  Select,
+  Drawer,
+  DatePicker,
+} from 'antd'
 import { UserOutlined, PlusOutlined } from '@ant-design/icons'
 import './style/index.sass'
-import Uploader from './uploader/index';
+import Uploader from './uploader/index'
 const settings = {
   greetings: `Добро пожаловать `,
   name: `Владимир Олегович`,
   position: `Администратор`,
-  editButton: `Редактировать аккаунт`
+  editButton: `Редактировать аккаунт`,
 }
 export default function DrawerUserInfo() {
-
   const [visible, setVisible] = useState(false)
   const { greetings, name, position, editButton } = settings
   const { Title } = Typography
@@ -20,12 +33,21 @@ export default function DrawerUserInfo() {
   const showDrawerEditUser = () => setVisible(!visible)
   return (
     <div>
-      <div className="drawer_avatar"> <Avatar size={92} icon={<UserOutlined />} /></div>
-      <div className='drawer-greetings'>
-        <Title level={4}>  {name}</Title>
+      <div className="drawer_avatar">
+        {' '}
+        <Avatar size={92} icon={<UserOutlined />} />
       </div>
-      <Tag className='drawer-tagPosition' color="#87d068">{position}</Tag>
-      <Button className="drawer-edit" type="primary" onClick={showDrawerEditUser}>
+      <div className="drawer-greetings">
+        <Title level={4}> {name}</Title>
+      </div>
+      <Tag className="drawer-tagPosition" color="#87d068">
+        {position}
+      </Tag>
+      <Button
+        className="drawer-edit"
+        type="primary"
+        onClick={showDrawerEditUser}
+      >
         {editButton}
       </Button>
       <Drawer
@@ -40,15 +62,12 @@ export default function DrawerUserInfo() {
               textAlign: 'right',
             }}
           >
-            <Button
-              onClick={onClose}
-              style={{ marginRight: 8 }}
-            >
+            <Button onClick={onClose} style={{ marginRight: 8 }}>
               Cancel
-              </Button>
+            </Button>
             <Button onClick={onClose} type="primary">
               Submit
-              </Button>
+            </Button>
           </div>
         }
       >
@@ -58,7 +77,9 @@ export default function DrawerUserInfo() {
               <Form.Item
                 name="name"
                 label="Как меня зовут"
-                rules={[{ required: true, message: 'Поле ФИО не может быть пустым' }]}
+                rules={[
+                  { required: true, message: 'Поле ФИО не может быть пустым' },
+                ]}
               >
                 <Input placeholder="ФИО" />
               </Form.Item>
@@ -67,7 +88,9 @@ export default function DrawerUserInfo() {
               <Form.Item
                 name="email"
                 label="Емайл адрес"
-                rules={[{ required: true, message: 'Пожалуйста укажите email адрес' }]}
+                rules={[
+                  { required: true, message: 'Пожалуйста укажите email адрес' },
+                ]}
               >
                 <Input
                   style={{ width: '100%' }}
@@ -77,7 +100,6 @@ export default function DrawerUserInfo() {
               </Form.Item>
             </Col>
           </Row>
-
 
           <Row gutter={16}>
             <Col span={24}>
@@ -91,9 +113,11 @@ export default function DrawerUserInfo() {
                   },
                 ]}
               >
-                <Input.TextArea rows={4} placeholder="please enter url description" />
+                <Input.TextArea
+                  rows={4}
+                  placeholder="please enter url description"
+                />
               </Form.Item>
-
             </Col>
           </Row>
           <Row gutter={16}>
@@ -109,7 +133,6 @@ export default function DrawerUserInfo() {
               >
                 <Uploader />
               </Form.Item>
-
             </Col>
           </Row>
         </Form>

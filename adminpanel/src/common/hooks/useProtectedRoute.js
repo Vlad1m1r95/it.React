@@ -2,12 +2,15 @@ import { useMemo } from 'react'
 import { useHistory } from 'react-router-dom'
 
 function useProtectedRoute() {
-
-  const protectedRoute = [`/EmployeeManagement`, `/Dashboard`, `/OrderManagement`]
+  const protectedRoute = [
+    `/EmployeeManagement`,
+    `/Dashboard`,
+    `/OrderManagement`,
+  ]
   const history = useHistory()
-  const { location: { pathname } } = history
-
-
+  const {
+    location: { pathname },
+  } = history
 
   const authDataJSON = localStorage.getItem('authData')
   let redirect = ''
@@ -19,10 +22,9 @@ function useProtectedRoute() {
       if (authData.status !== undefined) {
         if (protectedRoute.findIndex(route => route === pathname) !== 1) {
           redirect = '/404'
-        }
-        else {
-          redirect = authData.status === 200 ? history.location.pathname : '/401'
-
+        } else {
+          redirect =
+            authData.status === 200 ? history.location.pathname : '/401'
         }
       }
     }

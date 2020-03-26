@@ -31,7 +31,6 @@ function useAuth() {
         data: data,
       })
     } catch (e) {
-
       setRes({
         isLoading: false,
       })

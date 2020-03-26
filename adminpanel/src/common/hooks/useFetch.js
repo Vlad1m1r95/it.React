@@ -1,5 +1,5 @@
-import { useEffect, useState, useCallback } from 'react';
-import Api from './../../api/api';
+import { useEffect, useState, useCallback } from 'react'
+import Api from './../../api/api'
 
 function useFetch() {
   const [apiMethod, setApiMethod] = useState('initial null')
@@ -14,7 +14,9 @@ function useFetch() {
     setApiMethod(method)
     setPayload(payload)
     if (Array.isArray(reqDependence)) {
-      if (reqDependence.filter(n => dependence.indexOf(n) === -1).length !== 0) {
+      if (
+        reqDependence.filter(n => dependence.indexOf(n) === -1).length !== 0
+      ) {
         setDependence(reqDependence)
       }
     }

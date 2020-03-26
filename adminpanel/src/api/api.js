@@ -96,7 +96,6 @@ export default class Api {
         throw new Error(' api withParams method needs query parameters')
       }
 
-
       const newID = id
       const queryIdstr = newID.map(i => `id=${i}&`).join('')
       return queryIdstr
