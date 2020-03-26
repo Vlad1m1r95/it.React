@@ -5,76 +5,74 @@ import nanoid from 'nanoid'
 import { Form, Button } from 'antd'
 import formFields from '../settings/_fields'
 import createForm from './../../../common/hoc/form/form'
-import { connect } from 'react-redux'
+import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { actions } from './../../../actions'
-import { asyncAction } from './../../../common/helpers/async'
+import useFetch from './../../../common/hooks/useFetch'
+import { ADD_EDIT_EMPLOYEE, ADD_EMPLOYEE } from './../../../actionTypes/';
+
+
+
 
 function СontrolFormEmployee(props) {
   const [form] = Form.useForm()
   const {
     settings: { buttons },
-    settings,
   } = props
   const { add, edit } = buttons
   const [mode, setMode] = useState(add)
-  const {
-    editEmployee,
-    resetEditEmployee,
-    setEmployees,
-    subscribe,
-    flag,
-    isError: { error, setError },
-    loading: { loading, setLoading },
-  } = props
-  console.log(addEditEmployee)
-  const CALL_PARENT = subscribe
-  const ADD_EDIT_EMPLOYEE = 'editEmployee'
-  const ADD_EMPLOYEE = 'addEmployee'
+  const dispatch = useDispatch()
+
+
+  const ADD_FETCH_EDIT_EMPLOYEE = 'editEmployee'
+  const ADD_FETCH_EMPLOYEE = 'addEmployee'
 
   const [buttonText, setButtonText] = useState(add.text)
-  const [updateFlag, setUpdateFlag] = useState([false])
+  const editEmployee = useSelector(state => state.editEmployeeReduser.data, shallowEqual)
+
+  const { setReq, res } = useFetch()
+  const { isLoading, data } = res
 
   useEffect(() => {
-    if (Object.keys(editEmployee).length !== 0) {
-      form.setFieldsValue(editEmployee)
-      setMode(edit)
-      loading === false ? setButtonText(edit.text) : setButtonText(edit.loading)
-    } else {
-      setMode(add)
-      loading === false ? setButtonText(add.text) : setButtonText(add.loading)
+    if (typeof editEmployee === 'object') {
+      if (Object.keys(editEmployee).length !== 0) {
+        form.setFieldsValue(editEmployee)
+        setMode(edit)
+        setButtonText(edit.text)
+      } else {
+        setMode(add)
+      }
     }
-  })
+
+
+  }, [editEmployee])
 
   const onFinish = values => {
     values.contractor = values.contractor === true ? 'Контрактор' : 'Фрилансер'
-    setLoading(true)
     console.log(values)
     if (mode === edit) {
       mode.text = mode.loading
       values = { ...values, key: editEmployee.key, id: editEmployee.key }
-      const settings_edit = {
-        payload: values,
-        setUpdateFlag,
-        setLoading,
-        // setError,
-        flag,
-      }
-      asyncAction(ADD_EDIT_EMPLOYEE, CALL_PARENT, settings_edit)
+      setReq(ADD_FETCH_EDIT_EMPLOYEE, values)
 
-      //resetEditEmployee()
+      dispatch({ type: ADD_EDIT_EMPLOYEE, payload: values })
+      isLoading === true ? setButtonText(edit.text) : setButtonText(add.text)
+      if (isLoading === true) {
+        setButtonText(edit.text)
+        setMode(edit)
+      }
+      else {
+        setButtonText(add.text)
+        setMode(add)
+      }
     }
     if (mode === add) {
       mode.text = mode.loading
       const id = nanoid(3)
       const password = nanoid(6)
-      values = { ...values, key: id, id, password }
-      const settings_add = {
-        payload: values,
-        setUpdateFlag,
-        flag,
-      }
-      asyncAction(ADD_EMPLOYEE, CALL_PARENT, settings_add)
-      // addEmployee(values)
+      const email = 'test@email.com'
+      values = { ...values, key: id, id, password: password, email: email }
+      setReq(ADD_FETCH_EMPLOYEE, values)
+      dispatch({ type: ADD_EMPLOYEE, payload: values })
     }
     form.resetFields()
   }
@@ -104,7 +102,7 @@ function СontrolFormEmployee(props) {
     >
       {props.children}
       <Button
-        loading={loading}
+        loading={isLoading}
         type="primary"
         htmlType="submit"
         data-action={mode.action}
@@ -115,32 +113,5 @@ function СontrolFormEmployee(props) {
   )
 }
 
-const Employee = createForm(СontrolFormEmployee, formFields)
-
-const {
-  addEmployee,
-  addEditEmployee,
-  resetEditEmployee,
-  setEmployees,
-} = actions
-const mapStateToProps = state => ({
-  editEmployee: state.editEmployeeReduser,
-})
-const mapDispatchToProps = {
-  resetEditEmployee,
-  addEmployee,
-  addEditEmployee,
-  setEmployees,
-  // editEmployee: employee => editEmployee(dispatch, employee),
-}
-
-const EmployeeEditor = connect(
-  mapStateToProps,
-  mapDispatchToProps
-  // dispatch => ({
-  //   addEmployee: employee => addEmployee(dispatch, employee),
-  //   addEditEmployee: employee => addEditEmployee(dispatch, employee),
-  //   resetEditEmployee: () => resetEditEmployee(dispatch),
-  // })
-)(Employee)
+const EmployeeEditor = createForm(СontrolFormEmployee, formFields)
 export default EmployeeEditor

@@ -3,6 +3,7 @@ import './style/clock.sass'
 import hooks from './../../../hooks/index'
 
 function ClockClassic() {
+
   const deg = 6
   let day = new Date()
   let hh = day.getHours() * 30
@@ -22,13 +23,10 @@ function ClockClassic() {
     setHour(`rotateZ(${hh + mm / 12}deg)`)
     setMinutes(`rotateZ(${mm}deg)`)
     setSeconds(`rotateZ(${ss}deg)`)
-    console.log(hour)
-    // setCount(count + 1)
-    // console.log(count)
   }, 1000)
   return (
     <div className="clock-wrap">
-      <div className="clock-classik">
+      <div className="clock-classik" >
         <div className="hour">
           <div style={{ transform: hour }} className="hr" id="hr"></div>
         </div>

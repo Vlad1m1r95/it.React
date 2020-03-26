@@ -23,20 +23,28 @@ export async function asyncAction(
   { payload, flag, setLoading = false },
   responseJson = false
 ) {
+  // payload = JSON.stringify(payload)
+  console.log(payload)
   if (!payload)
     throw new Error(`${ERROR_TYPE_REQUIRED} — ${ERROR_MISSING_PAYLOAD}`)
   try {
+    console.log(payload)
     const response = await Api[apiMethod](payload)
     const json = await response.json()
+    console.log(json)
+    console.log(json)
+    console.log(json)
+
     if (callback !== (null || undefined || 'dont call')) {
       if (responseJson === true) {
-        console.log(json)
         callback(json)
+        return json
       } else {
         callback(!flag)
       }
     }
   } catch (e) {
+    console.error(`Ошибка запроса : ${e}  , json : `)
     // setError !== undefined ? setError(e.message || 'Unexpected error') : console.log('обработчик ошибок отключен')
   }
 }

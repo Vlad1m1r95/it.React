@@ -42,27 +42,27 @@ function EmployeesManagement({ setEmployees }) {
   // })
 
   // const transformData = data => data
-  const [loading, setLoading] = useState(true)
-  useEffect(() => {
-    UpdateStoreifChildChange(loading)
-  }, [loading])
+  // const [loading, setLoading] = useState(true)
+  // useEffect(() => {
+  //   UpdateStoreifChildChange(loading)
+  // }, [loading])
   // useEffect(() => {
   //   UpdateStoreifChildChange(loading)
   // }, [])
 
-  async function UpdateStoreifChildChange(flag) {
-    console.log('d')
-    try {
-      await asyncGetDataAndUpdateStore(GET_FETCH_EMPLOYEES, SET_NEW_STORE)
-    } catch (e) {
-      setError(e.message || 'Unexpected error')
-    }
-    setLoading(false)
-  }
+  // async function UpdateStoreifChildChange(flag) {
+  //   console.log('d')
+  //   try {
+  //     await asyncGetDataAndUpdateStore(GET_FETCH_EMPLOYEES, SET_NEW_STORE)
+  //   } catch (e) {
+  //     setError(e.message || 'Unexpected error')
+  //   }
+  //   setLoading(false)
+  // }
 
-  const Updater = mount => {
-    UpdateStoreifChildChange(mount)
-  }
+  // const Updater = mount => {
+  //   UpdateStoreifChildChange(mount)
+  // }
 
   return (
     <Row
@@ -78,18 +78,18 @@ function EmployeesManagement({ setEmployees }) {
         {' '}
         <EmployeeEditor
           flag={flag}
-          loading={{ loading, setLoading }}
+          // loading={{ loading, setLoading }}
           isError={(error, setError)}
-          subscribe={UpdateStoreifChildChange}
+          // subscribe={UpdateStoreifChildChange}
           settings={{ ...settingsForm }}
         />
       </Col>
       <Col className="theme-table col-height" span={14}>
         <TableEmployees
           flag={flag}
-          loading={{ loading, setLoading }}
+          // loading={{ loading, setLoading }}
           isError={(error, setError)}
-          subscribe={UpdateStoreifChildChange}
+          // subscribe={UpdateStoreifChildChange}
           settings={{ ...settingsTable }}
         />
       </Col>

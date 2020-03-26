@@ -1,14 +1,9 @@
 const API_BASE_ADDRESS = 'http://localhost:4000'
-
 const AUTH_LOGIN = '/auth/login'
-const AUTH_HEADER = 'SuperAdmin'
-
+const AUTH_HEADER = 'Bearer'
 const EMPLOYEES = '/employees'
 const STATISTICS = '/statistics'
 
-const myHeaders = new Headers()
-myHeaders.append('Autot', 'text/xml')
-console.log(myHeaders.get('Content-Type'))
 export default class Api {
   static logIn(payload) {
     const uri = API_BASE_ADDRESS + AUTH_LOGIN
@@ -17,9 +12,22 @@ export default class Api {
       body: JSON.stringify(payload),
       headers: {
         'Content-Type': 'application/json',
+        authorization: AUTH_HEADER,
       },
     })
   }
+  static testUpload(payload) {
+    const uri = API_BASE_ADDRESS + '/images'
+    return fetch(uri, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: AUTH_HEADER,
+      },
+    })
+  }
+
   //EMPLOYEES
   static getEmployees() {
     const uri = API_BASE_ADDRESS + EMPLOYEES
@@ -28,7 +36,7 @@ export default class Api {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: AUTH_HEADER,
+        authorization: AUTH_HEADER,
       },
     })
   }
@@ -39,7 +47,7 @@ export default class Api {
       body: JSON.stringify(employee),
       headers: {
         'Content-Type': 'application/json',
-        Authorization: AUTH_HEADER,
+        authorization: AUTH_HEADER,
       },
     })
   }
@@ -50,7 +58,7 @@ export default class Api {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: AUTH_HEADER,
+        authorization: AUTH_HEADER,
       },
     })
   }
@@ -62,19 +70,44 @@ export default class Api {
       body: JSON.stringify(employee),
       headers: {
         'Content-Type': 'application/json',
-        Authorization: AUTH_HEADER,
+        authorization: AUTH_HEADER,
       },
     })
   }
   //STATISTICS
-  static getStatistics(payload) {
-    const uri = API_BASE_ADDRESS + STATISTICS + `/${payload.id}`
+  static getAllStatistics(payload) {
+    const uri = API_BASE_ADDRESS + STATISTICS
     return fetch(uri, {
-      method: 'PUT',
-      body: JSON.stringify(payload),
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: AUTH_HEADER,
+        authorization: AUTH_HEADER,
+      },
+    })
+  }
+
+  static getStatisticsWithParams(payload) {
+    const toStringqueryParams = () => {
+      const {
+        params,
+        params: { id },
+      } = payload
+      if (params === null || undefined) {
+        throw new Error(' api withParams method needs query parameters')
+      }
+
+
+      const newID = id
+      const queryIdstr = newID.map(i => `id=${i}&`).join('')
+      return queryIdstr
+    }
+    const queryIdstr = toStringqueryParams()
+    const uri = API_BASE_ADDRESS + STATISTICS + `/?${queryIdstr}`
+    return fetch(uri, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: AUTH_HEADER,
       },
     })
   }

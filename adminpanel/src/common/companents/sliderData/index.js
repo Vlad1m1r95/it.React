@@ -1,9 +1,11 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react'
 import { Slider } from 'antd'
-const DateSlider = ({ period, mode, position }) => {
-  let currentMonth = new Date().getMonth()
-  const [currentPosition, setCurrentPosition] = useState(period - currentMonth)
+const DateSlider = ({ period, mode, position, callback }) => {
+  let currentMonth = new Date().getMonth() + 1
+  console.log(currentMonth)
+  const [currentPosition, setCurrentPosition] = useState(currentMonth)
+  const LANG = 'RU'
   let mark = {}
   let monthNames = [
     'January',
@@ -19,8 +21,23 @@ const DateSlider = ({ period, mode, position }) => {
     'November',
     'December',
   ]
+  let monthNamesRU = [
+    'Январь',
+    'Февраль',
+    'Март',
+    'Апрель',
+    'Май',
+    'Июнь',
+    'Июль',
+    'Август',
+    'Сентябрь',
+    'Октябрь',
+    'Ноябрь',
+    'Декабрь',
+  ]
 
-  if (position === 'vertical') {
+  monthNames = LANG === 'RU' ? monthNamesRU : monthNames
+  if (position !== 'vertical') {
     monthNames.reverse()
     currentMonth = period - currentMonth
   }
@@ -40,8 +57,8 @@ const DateSlider = ({ period, mode, position }) => {
   }
 
   const changeHandler = value => {
-    console.log(value)
     mode === 'month' ? setCurrentPosition(value) : setCurrentPosition(value[1])
+    callback(value)
   }
   const renderMode = () => {
     let settings = {}
@@ -69,7 +86,8 @@ const DateSlider = ({ period, mode, position }) => {
     }
     return (
       <Slider
-        vertical
+        reverse
+        vertical={true}
         className="slider-filterProgress"
         {...settings}
         dots={true}

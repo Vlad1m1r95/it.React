@@ -1,11 +1,14 @@
 import { combineReducers } from 'redux'
-import employeeReduser from './employee'
-import { editEmployeeReduser } from './employee'
-import { sliceReduser } from './../slice'
+import { addEmployeeReduser, editEmployeeReduser, addEditEmployeeReduser } from './employee'
+import { statisticReduser, sampleStatisticsReduser } from './statistics'
+import { authDataReduser } from './auth'
 
 const rootReducer = combineReducers({
-  employeeReduser,
+  authDataReduser,
   editEmployeeReduser,
-  ...sliceReduser,
+  addEditEmployeeReduser,
+  statisticReduser,
+  sampleStatisticsReduser,
+  addEmployeeReduser,
 })
 export default rootReducer

@@ -1,45 +1,9 @@
-import React, { useEffect, useCallback } from 'react'
-import useAuth from './../../hooks/useAuth'
-import { actions } from './../../../actions/index'
-import { useHistory, Redirect } from 'react-router-dom'
+import React from 'react'
 import { Form, Input, Button, Avatar, message } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import coffeImage from './img/coffe.png'
 import ClockClassic from './../clock/classic-white/index'
-import './style/login.sass'
-
-function Login({ callback }) {
-  const { authData, res } = useAuth()
-  const onFinish = async values => {
-    authData(values)
-  }
-
-  useEffect(() => {
-    const alertMessage = loading => {
-      if (!res.data) return
-      const {
-        data: { status },
-      } = res
-      const key = 'updatable'
-      if (loading) {
-        message.loading({ content: 'Секундочку...', key, duration: 2 })
-      } else {
-        if (status === 401) {
-          message.error({ content: 'Упс данные не верны 😥', key, duration: 3 })
-        }
-        if (status === 200) {
-          message.success({ content: 'Ура данные верны 😎!', key, duration: 3 })
-        }
-      }
-    }
-    alertMessage(res.isLoading)
-  }, [res])
-
-  if (res.data !== undefined) {
-    if (res.data.status === 200) {
-      return <Redirect to="/Dashboard" />
-    }
-  }
+const FormLogin = () => {
   return (
     <div className="login-contaner">
       <div className="coffe">
@@ -85,6 +49,7 @@ function Login({ callback }) {
             />
           </Form.Item>
           <Form.Item>
+            {/* {res.isLoading === true ? buttonLoading : buttonDefault} */}
             <Button
               type="primary"
               htmlType="submit"
@@ -99,5 +64,3 @@ function Login({ callback }) {
     </div>
   )
 }
-
-export default Login
