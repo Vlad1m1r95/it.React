@@ -17,10 +17,10 @@ function HeaderContent() {
       <Col id="UserAvatar" span={9}>
         <UserAvatar />
       </Col>
-      <Col span={6}>
+      {/* <Col span={6}>
         <Notifications />
-      </Col>
-      <Col span={9}>
+      </Col> */}
+      <Col span={9} offset={6}>
         {' '}
         <DateAndClock />
       </Col>

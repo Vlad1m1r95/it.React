@@ -12,15 +12,14 @@ import {
   Breadcrumb,
 } from 'antd'
 
-import ChartCircle from './../chart/chart2';
-import ChartCircleVer2 from './../chart/chart3';
+import ChartCircle from './../chart/chart2'
+import ChartCircleVer2 from './../chart/chart3'
 import './style/index.sass'
 
 function ComprehensiveProgress(props) {
   const [isOpen, setIsOpen] = useState(true)
   const {
     settings: { title, extra, percent, data },
-
   } = props
 
   const closeProgress = <Progress percent={percent} status="active" />
@@ -29,7 +28,6 @@ function ComprehensiveProgress(props) {
     <React.Fragment>
       {/* <Progress percent={percent} status="active" /> */}
       <ChartCircleVer2 data={data} />
-
     </React.Fragment>
   )
 
@@ -38,11 +36,15 @@ function ComprehensiveProgress(props) {
   }
   return (
     <div className="card" onClick={clickhandler}>
-      <Card className="card-progress" title={title} extra={extra} bordered={true}>
+      <Card
+        className="card-progress"
+        title={title}
+        extra={extra}
+        bordered={true}
+      >
         {isOpen === true ? openProgress : closeProgress}
       </Card>
     </div>
-
   )
 }
 

@@ -3,7 +3,6 @@ import Api from './../../api/api'
 import { useDispatch } from 'react-redux'
 import { SET_AUTH_DATA_SUCCESS } from './../../actionTypes/index'
 
-
 function useAuth() {
   const [employeeAuthData, setEmployeeAuthData] = useState('initial null')
   const [res, setRes] = useState({
@@ -14,7 +13,6 @@ function useAuth() {
     setEmployeeAuthData(authData)
   }
   const API_METHOD = 'logIn'
-
 
   async function fetchUseApi(apiMethod) {
     if (employeeAuthData === 'initial null') return

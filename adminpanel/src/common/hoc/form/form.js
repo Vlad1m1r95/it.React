@@ -1,7 +1,5 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
-import { Form, Input, Button, Checkbox, Select } from 'antd'
-import { editEmployee } from './../../../actions/employee'
 
 // const InputName = CreateField(nameinput)
 

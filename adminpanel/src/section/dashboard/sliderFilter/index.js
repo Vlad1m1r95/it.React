@@ -5,7 +5,7 @@ import DateSlider from './../../../common/companents/sliderData/'
 import useFetch from './../../../common/hooks/useFetch'
 import getMissingNumbers from './../../../common/helpers/array/getMissingNumbers'
 import { useDispatch } from 'react-redux'
-import { SET_STATISTIC } from './../../../actionTypes';
+import { SET_STATISTIC } from './../../../actionTypes'
 // const month = new Date().getMonth() + 1
 
 const SliderFilterProgress = props => {
@@ -16,7 +16,6 @@ const SliderFilterProgress = props => {
   const { setReq, res } = useFetch()
   const dispatch = useDispatch()
   const callback = value => {
-
     value = Array.isArray(value) === true ? value : [value]
     const idStats = getMissingNumbers(value)
     const GET_CURRENT_STATISTICS = 'getStatisticsWithParams'

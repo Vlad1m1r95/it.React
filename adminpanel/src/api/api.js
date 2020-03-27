@@ -42,7 +42,7 @@ export default class Api {
         'Content-Type': 'application/json',
         authorization: AUTH_HEADER,
       },
-      signal: abortController.signal
+      signal: abortController.signal,
     })
   }
   static addEmployee(employee) {

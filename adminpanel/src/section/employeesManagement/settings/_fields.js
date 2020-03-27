@@ -18,7 +18,7 @@ const InputName = props => (
     rules={[
       {
         required: true,
-        message: 'Пожалуйста укажите ФИO сотрудника!',
+        message: 'Пожалуйста, укажите ФИO сотрудника.',
       },
     ]}
   >
@@ -39,7 +39,7 @@ const SelectPosition = props => (
     rules={[
       {
         required: true,
-        message: 'Пожалуйста выберите должность',
+        message: 'Пожалуйста, выберите должность',
       },
     ]}
   >

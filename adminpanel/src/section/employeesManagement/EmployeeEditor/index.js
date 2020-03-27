@@ -77,17 +77,6 @@ function СontrolFormEmployee(props) {
     console.log(errorInfo)
   }
 
-  // UpdateWorkStatus(workStatus) {
-  //   workStatus === true
-  //     ? this.setState({ contractorText: 'Контрактор' })
-  //     : this.setState({ contractorText: 'Фрилансер' })
-  // }
-
-  // postFromServer() {
-  //   // Отправка на сервер. Тут должен быть POST запрос на сервер
-  //   //fetch()
-  // }
-
   return (
     <Form
       form={form}

@@ -25,10 +25,18 @@ function Login({ callback }) {
         message.loading({ content: 'Секундочку...', key, duration: 2 })
       } else {
         if (status === 401) {
-          message.error({ content: 'Упс! Неверные данные 😥', key, duration: 3 })
+          message.error({
+            content: 'Упс! Неверные данные 😥',
+            key,
+            duration: 3,
+          })
         }
         if (status === 200) {
-          message.success({ content: 'Ура! Данные верны 😎!', key, duration: 3 })
+          message.success({
+            content: 'Ура! Данные верны 😎!',
+            key,
+            duration: 3,
+          })
         }
       }
     }
