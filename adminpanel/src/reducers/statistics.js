@@ -5,7 +5,7 @@ export const statisticReduser = createReducer(
   {},
   {
     [SET_STATISTIC]: (state, action) => {
-      const data = action.data
+      const data = action.payload
       return {
         ...state,
         data,

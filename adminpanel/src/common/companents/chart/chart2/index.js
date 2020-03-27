@@ -42,14 +42,14 @@ export default class ChartCircle extends PureComponent {
 
   render() {
     return (
-      <PieChart width={400} height={400}>
+      <PieChart width={334} height={200}>
         <Pie
           data={data}
-          cx={200}
-          cy={200}
+          cx={65}
+          cy={100}
           labelLine={false}
           label={renderCustomizedLabel}
-          outerRadius={80}
+          outerRadius={60}
           fill="#8884d8"
           dataKey="value"
         >

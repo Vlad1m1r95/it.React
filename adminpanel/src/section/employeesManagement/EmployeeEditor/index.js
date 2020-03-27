@@ -65,7 +65,7 @@ function СontrolFormEmployee(props) {
       mode.text = mode.loading
       const id = nanoid(3)
       const password = nanoid(6)
-      const email = 'test@email.com'
+      const email = 'test@gmail.com'
       values = { ...values, key: id, id, password: password, email: email }
       setReq(ADD_FETCH_EMPLOYEE, values)
       dispatch({ type: ADD_EMPLOYEE, payload: values })

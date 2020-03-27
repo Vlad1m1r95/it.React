@@ -25,10 +25,10 @@ function Login({ callback }) {
         message.loading({ content: 'Секундочку...', key, duration: 2 })
       } else {
         if (status === 401) {
-          message.error({ content: 'Упс данные не верны 😥', key, duration: 3 })
+          message.error({ content: 'Упс! Неверные данные 😥', key, duration: 3 })
         }
         if (status === 200) {
-          message.success({ content: 'Ура данные верны 😎!', key, duration: 3 })
+          message.success({ content: 'Ура! Данные верны 😎!', key, duration: 3 })
         }
       }
     }
@@ -60,7 +60,7 @@ function Login({ callback }) {
             rules={[
               {
                 required: true,
-                message: 'Пожалуйста укажите email адрес',
+                message: 'Пожалуйста, укажите e-mail адрес',
               },
             ]}
           >
@@ -74,7 +74,7 @@ function Login({ callback }) {
             rules={[
               {
                 required: true,
-                message: 'Пожалуйста введите пароль',
+                message: 'Пожалуйста, введите пароль',
               },
             ]}
           >

@@ -6,7 +6,6 @@ function Page404() {
 
   const clickHandler = () => {
     const authData = JSON.parse(localStorage.getItem('authData'))
-    console.log(authData.status)
     if (authData !== undefined) {
       if (authData.status === 200) {
         history.push('/Dashboard')
@@ -19,7 +18,7 @@ function Page404() {
     <Result
       status="404"
       title="404"
-      subTitle="Ой 😔. Страница, которую вы посетили, не существует"
+      subTitle="Ой! 😔 Страницы, которую Вы хотите посетить, не существует."
       extra={
         <Button onClick={clickHandler} type="primary">
           Вернуться назад{' '}

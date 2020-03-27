@@ -38,8 +38,8 @@ const DateSlider = ({ period, mode, position, callback }) => {
 
   monthNames = LANG === 'RU' ? monthNamesRU : monthNames
   if (position !== 'vertical') {
-    monthNames.reverse()
-    currentMonth = period - currentMonth
+    // monthNames.reverse()
+    // currentMonth = period - currentMonth
   }
 
   for (let month = 1; month <= period; month++) {

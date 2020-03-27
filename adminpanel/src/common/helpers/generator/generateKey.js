@@ -8,5 +8,4 @@ const generateKey = (n, long) => {
   return keys
 }
 const keys = generateKey(20, 3)
-console.log(keys)
 export default keys

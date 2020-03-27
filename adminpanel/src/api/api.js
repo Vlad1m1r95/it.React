@@ -4,6 +4,8 @@ const AUTH_HEADER = 'Bearer'
 const EMPLOYEES = '/employees'
 const STATISTICS = '/statistics'
 
+const abortController = new AbortController()
+
 export default class Api {
   static logIn(payload) {
     const uri = API_BASE_ADDRESS + AUTH_LOGIN
@@ -29,8 +31,10 @@ export default class Api {
   }
 
   //EMPLOYEES
+
   static getEmployees() {
     const uri = API_BASE_ADDRESS + EMPLOYEES
+    // setTimeout(() => abortController.abort(), 5000)
     return fetch(uri, {
       // headers: AUTH_HEADER,
       method: 'GET',
@@ -38,6 +42,7 @@ export default class Api {
         'Content-Type': 'application/json',
         authorization: AUTH_HEADER,
       },
+      signal: abortController.signal
     })
   }
   static addEmployee(employee) {
@@ -111,3 +116,4 @@ export default class Api {
     })
   }
 }
+// Cancel the request if it takes more than 5 seconds

@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Api from './../../api/api'
 import { useDispatch } from 'react-redux'
 import { SET_AUTH_DATA_SUCCESS } from './../../actionTypes/index'
-import { useHistory } from 'react-router-dom'
+
 
 function useAuth() {
   const [employeeAuthData, setEmployeeAuthData] = useState('initial null')
@@ -10,13 +10,11 @@ function useAuth() {
     isLoading: false,
     data: { status: 'initial null' },
   })
-  console.log(employeeAuthData)
-  let history = useHistory()
   function authData(authData) {
     setEmployeeAuthData(authData)
   }
   const API_METHOD = 'logIn'
-  const ERROR_MISSING_PAYLOAD = 'UseAuth hook must contain the payload object'
+
 
   async function fetchUseApi(apiMethod) {
     if (employeeAuthData === 'initial null') return
